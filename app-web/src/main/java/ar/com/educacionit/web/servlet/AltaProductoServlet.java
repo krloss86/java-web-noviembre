@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ar.com.educacionit.domain.Producto;
 import ar.com.educacionit.services.ProductoService;
+import ar.com.educacionit.services.exceptions.ServiceException;
 import ar.com.educacionit.services.impl.ProductoServiceImpl;
 
 @WebServlet("/AltaProductoServlet")
@@ -32,10 +33,15 @@ public class AltaProductoServlet extends HttpServlet {
 		//llamar al servicio ProductoService
 		ProductoService productoService = new ProductoServiceImpl();
 		
-		Producto nuevoProducto = productoService.crearProducto(producto);
-		
-		request.setAttribute("productoCreado", nuevoProducto);
-		
+		Producto nuevoProducto;
+		try {
+			nuevoProducto = productoService.crearProducto(producto);
+			request.setAttribute("productoCreado", nuevoProducto);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+			request.setAttribute("productoCreado", null);
+		}
+				
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/producto.jsp") ;
 		
 		rd.forward(request, response);

@@ -9,11 +9,11 @@ public class ProductoWSSoapMain {
 	public static void main(String[] args) {
 		System.out.println("publicanod ws soap en el puerto 8000");
 		
-		Endpoint.publish("http://localhost:8000/", new ProductoWSSoapServiceImpl());
+		Endpoint.publish("http://localhost:8000/ws/productos", new ProductoWSSoapServiceImpl());
 		
-		System.out.println("Se ha iniciado el ws ProductoWSService: en http://localhost:8000/");
+		System.out.println("Se ha iniciado el ws ProductoWSService: en http://localhost:8000/ws/productos");
 		
-		System.out.println("La direccion del wsdl es: http://localhost:8000/?wsdl");
+		System.out.println("La direccion del wsdl es: http://localhost:8000/ws/productos?wsdl");
 	}
 
 }
