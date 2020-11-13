@@ -2,11 +2,9 @@ package ar.com.educacionit.repository.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.Optional;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
 
@@ -14,15 +12,12 @@ import ar.com.educacionit.domain.Producto;
 import ar.com.educacionit.exceptions.DuplicateException;
 import ar.com.educacionit.exceptions.GenericExeption;
 import ar.com.educacionit.repository.ProductoRepository;
-import ar.com.educacionit.repository.hibernate.HibernateUtils;
+import ar.com.educacionit.repository.hibernate.HibernateBaseRepository;
 
-public class ProductoRepositoryImpl implements ProductoRepository {
+public class ProductoRepositoryImpl extends HibernateBaseRepository implements ProductoRepository {
 
-	private SessionFactory factory;
-	
 	public ProductoRepositoryImpl() {
-		
-		factory = HibernateUtils.getSessionFactory();
+		super();
 	}
 	
 	@Override
