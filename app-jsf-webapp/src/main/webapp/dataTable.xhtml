@@ -1,0 +1,18 @@
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+    <h:form>
+		<h:dataTable value="#{datosBean.lista}" var="dato">
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+				#{dato.id}				
+			</h:column>	
+			<h:column>
+				<f:facet name="header">Descripción</f:facet>
+				#{dato.descripcion}				
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</html>

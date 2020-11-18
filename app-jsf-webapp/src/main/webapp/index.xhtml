@@ -1,0 +1,25 @@
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+	
+	<h:head>
+		<title>Clase5 - JSF</title>
+	</h:head>
+
+	<h:body>
+		
+		<h1>  #{saludoBean.saludar()} </h1>
+		 
+		<h:form>
+			<h:inputHidden value="hola mundo"/>
+		</h:form> 
+		 
+		<h:form>
+			<h:commandButton action="login" value="Login"/>
+			<h:commandButton action="#{loginBean.irALogin}" value="Login Desde Método"/>
+			<h:link outcome="login-success">Ir A Login Success</h:link>
+		</h:form> 
+	</h:body>
+	
+</html>
