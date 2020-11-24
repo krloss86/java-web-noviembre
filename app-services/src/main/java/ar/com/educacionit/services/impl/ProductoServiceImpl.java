@@ -80,8 +80,11 @@ public class ProductoServiceImpl implements ProductoService {
 
 	@Override
 	public List<TipoProducto> findTipoProductos() throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			return this.productoRepository.findTipoProductos();
+		} catch (GenericExeption e) {
+			throw new ServiceException("No se pudo obtener los tipos de productos",e);
+		}
 	}
 
 	@Override

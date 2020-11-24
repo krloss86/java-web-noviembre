@@ -40,6 +40,10 @@
 					            </h:outputText>
 							</h:column>
 							<h:column>
+								<f:facet name="header">Tipo</f:facet>
+								<h:outputText value="#{producto.tipoProducto.descripcion}"/>
+							</h:column>
+							<h:column>
 								<f:facet name="Editar"/>
 								<h:commandButton 
 									action="#{productoBean.editarProducto(producto.codigo)}"

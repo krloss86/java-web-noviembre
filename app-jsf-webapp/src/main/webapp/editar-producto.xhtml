@@ -52,9 +52,19 @@
 						</h:inputText>
 						<h:message for="precio" style="color:red;"/>
 					</div>
-					<h:selectOneMenu value="#{productoBean.producto.tipoProducto.id}" styleClass="form-control">
-					  <option value="1">Electrodomestico</option>					  
-					</h:selectOneMenu>
+					<div class="form-group">
+						<h:selectOneMenu 
+							id="tipoProducto" 
+							value="#{productoBean.tipoProducto.id}"
+							class="form-control"  
+							style="width:100%">
+							<f:selectItems var="tipoProducto"
+								value="#{productoBean.getTipoProductos()}"
+								itemLabel="#{tipoProducto.descripcion}" 
+			                	itemValue="#{tipoProducto.id}">
+			                </f:selectItems>
+						</h:selectOneMenu>
+					</div>
 					<h:commandButton value="Grabar" action="#{productoBean.updateProducto()}" class="btn btn-success"/>
 					<h:link outcome="listado-productos.xhtml?faces-redirect=true" value="Volver" styleClass="btn btn-primary ml-2"/>
 				</h:form>

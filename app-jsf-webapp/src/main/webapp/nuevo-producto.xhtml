@@ -59,6 +59,25 @@
 							</h:inputText>
 							<h:message for="precio" style="color:red;"/>
 						</div>
+						<div class="form-group">
+							<h:outputLabel for="precio" class="control-label col-sm-4">Tipo Producto</h:outputLabel>
+							<h:selectOneMenu 
+								id="tipoProducto" 
+								value="#{productoBean.tipoProducto.id}"
+								required="true"
+								requiredMessage="Seleccione un tipo de Producto"
+								label="Tipo Producto"
+								class="form-control" 
+								style="width:100%">
+								<f:selectItem itemValue="" itemLabel=""/>
+								<f:selectItems var="tipoProducto"
+									value="#{productoBean.getTipoProductos()}"
+									itemLabel="#{tipoProducto.descripcion}" 
+				                	itemValue="#{tipoProducto.id}">
+				                </f:selectItems>
+							</h:selectOneMenu>
+			                <h:message for="tipoProducto" style="color:red;"/>
+						</div>
 						<h:commandButton 
 							value="Grabar" 
 							action="#{productoBean.crearNuevoProducto()}" 

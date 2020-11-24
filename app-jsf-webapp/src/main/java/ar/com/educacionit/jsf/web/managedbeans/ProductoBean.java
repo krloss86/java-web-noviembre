@@ -2,11 +2,13 @@ package ar.com.educacionit.jsf.web.managedbeans;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import ar.com.educacionit.domain.Producto;
+import ar.com.educacionit.domain.TipoProducto;
 import ar.com.educacionit.services.ProductoService;
 import ar.com.educacionit.services.exceptions.ServiceException;
 import ar.com.educacionit.services.impl.ProductoServiceImpl;
@@ -21,6 +23,8 @@ public class ProductoBean {
 	
 	private Producto producto = new Producto();
 	
+	private TipoProducto tipoProducto = new TipoProducto();
+	
 	public List<Producto> findProductos() {
 		try {
 			return this.ps.findProductos();
@@ -34,6 +38,7 @@ public class ProductoBean {
 		
 		String target = "listado-productos?feces-redirect=true";
 		try {
+			this.producto.setTipoProducto(this.tipoProducto);
 			this.ps.updateProducto(this.producto);
 		} catch (ServiceException e) {
 			this.mensajeError = e.getCause().getMessage();
@@ -60,6 +65,7 @@ public class ProductoBean {
 	public String crearNuevoProducto() {
 		String target = "listado-productos";
 		try {
+			this.producto.setTipoProducto(this.tipoProducto);
 			this.ps.crearProducto(this.producto);
 		} catch (ServiceException e) {
 			this.mensajeError = e.getCause().getMessage();
@@ -86,6 +92,27 @@ public class ProductoBean {
 
 	public void setProducto(Producto producto) {
 		this.producto = producto;
+	}
+	
+	public TipoProducto[] getTipoProductos() {
+		TipoProducto[] tiposProductos;
+		try {
+			tiposProductos = this.ps.findTipoProductos()
+					.stream()
+					.collect(Collectors.toSet())
+					.toArray(new TipoProducto[] {});
+		} catch (ServiceException e) {
+			tiposProductos = new TipoProducto[] {};
+		}
+		return tiposProductos;
+	}
+
+	public TipoProducto getTipoProducto() {
+		return tipoProducto;
+	}
+
+	public void setTipoProducto(TipoProducto tipoProducto) {
+		this.tipoProducto = tipoProducto;
 	}
 	
 	

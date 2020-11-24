@@ -3,6 +3,7 @@ package ar.com.educacionit.repository;
 import java.util.List;
 
 import ar.com.educacionit.domain.Producto;
+import ar.com.educacionit.domain.TipoProducto;
 import ar.com.educacionit.exceptions.DuplicateException;
 import ar.com.educacionit.exceptions.GenericExeption;
 
@@ -21,4 +22,6 @@ public interface ProductoRepository {
 	public Producto delete(String codigoProducto) throws GenericExeption;
 
 	public List<Producto> search(String desripcion) throws GenericExeption;
+
+	public List<TipoProducto> findTipoProductos() throws GenericExeption;
 }
