@@ -3,23 +3,26 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 	
 	<h:head>
-		<title>Clase 6 - CDI + JSF Avanzado</title>
+		<title>Clase 7 - CDI + JSF Avanzado</title>
 		<h:outputScript library="javax.faces" name="jsf.js" target="body"/>
 		<h:outputStylesheet library="webjars" name="/bootstrap/4.3.1/css/bootstrap.min-jsf.css"/>
 	</h:head>
 	
 	<h:body>
 		<div class="container">
-			<div class="jumbotron">
-			  <h1 class="display-4">Bienvenido!</h1>
-			  <p class="lead">EudacionIt - Curso Java Web Api</p>
-			  <hr class="my-4"/>
-			  <p>JSF + CDI</p>
-			  <h:link styleClass="btn btn-primary btn-lg" outcome="login.xhtml?faces-redirect=true" value="Ir A Login" />
-			</div>
+			<p:panel id="basic" 
+				footer="EducacionIT 2020 - Instructor Carlos H. López" 
+				style="margin-bottom:20px">
+		        <h:panelGrid columns="2" cellpadding="10">
+		            <h:outputText value="EudacionIt - Curso Java Web Api" />
+		        </h:panelGrid>
+		        <p:separator/>
+		        <p:linkButton outcome="login.xhtml?faces-redirect=true" value="Ir A Login" style="margin-right:20px;"/>
+		    </p:panel>
 		</div>
 	</h:body>
 </html>
