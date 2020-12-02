@@ -1,10 +1,10 @@
 import React from 'react';
 import AppService from '../services/appService';
-// import Form from './Form';
-// import Listado from './Listado';
+import Form from './Form';
+import Listado from './Listado';
 import Login from './Login';
-// import Mensajeria from './Mensajeria';
-// import Navbar from './Navbar';
+import Mensajeria from './Mensajeria';
+import Navbar from './Navbar';
 
 class Layout extends React.Component {
 
@@ -25,11 +25,23 @@ class Layout extends React.Component {
 
         return(
             <div className="container-fluid">
-                {/* <Mensajeria></Mensajeria> */}
+                <Mensajeria></Mensajeria>
                 {
                     !this.state.logged && 
                     <Login></Login>
-                }               
+                }
+                {
+                    this.state.logged && 
+                    <Navbar></Navbar>
+                }  
+                {
+                    this.state.logged && 
+                    <Form></Form>
+                }  
+                {
+                    this.state.logged && 
+                    <Listado></Listado>
+                }     
             </div>
         );
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import MensajeriaService from '../services/mensajeriaServices';
-import ProuctoDataService from '../services/productoDataService';
+//import ProuctoDataService from '../services/productoDataService';
 import ProductoServie from '../services/productoService';
 
 /**
@@ -10,20 +10,24 @@ class Producto extends React.Component {
     constructor () {
         super();
         this.productoService = ProductoServie.instance;
-        this.productoDataService = ProuctoDataService.instance;
+        // this.productoDataService = ProuctoDataService.instance;
         this.mensajeriaService = MensajeriaService.instance;
 
         this.deleteProducto = (id) => {
-            this.productoService.deleteProducto(id).subscribe(
-                data => {
-                    this.mensajeriaService.success(`Se ha eliminado exitosamente el producto ${id}`)
-                },
-                error => {
-                    console.log(error);
-                    this.mensajeriaService.error(`NO se ha eliminado exitosamente el producto ${id}`)
-                }
-            );
+            //if(confirm('Desea eliminar')) {
+                this.productoService.deleteProducto(id).subscribe(
+                    data => {
+                        this.mensajeriaService.success(`Se ha eliminado exitosamente el producto ${id}`)
+                    },
+                    error => {
+                        console.log(error);
+                        this.mensajeriaService.error(`NO se ha eliminado exitosamente el producto ${id}`)
+                    }
+                );
+            //}
         }
+
+        //editar 
     }
 
     render() {

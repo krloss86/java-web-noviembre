@@ -32,7 +32,11 @@ class MensajeriaService {
             }
         
             this.clearMensaje = () => {
-                this.mensajeSubject.next({mensaje:null, type:null});
+                const newMessage = {
+                    mensaje: null,
+                    type: null
+                };
+                this.mensajeSubject.next(newMessage);
             }
         }
 
