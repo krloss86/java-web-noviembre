@@ -73,6 +73,7 @@ public class ProductoResource {
 		
 		try {			
 			Producto productoCreado = this.ps.crearProducto(producto);
+			productoCreado = this.ps.getProductoById(productoCreado.getId());
 			return Response.status(Status.CREATED).entity(productoCreado).build();
 		} catch (ServiceException e) {
 			return construirErrores(e);

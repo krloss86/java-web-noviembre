@@ -28,6 +28,7 @@ import ar.com.educacionit.services.UserService;
 import ar.com.educacionit.services.exceptions.ServiceException;
 import ar.com.educacionit.services.impl.UserServiceImpl;
 
+
 @Provider
 public class AuthenticationFilter implements ContainerRequestFilter{
 
@@ -40,9 +41,27 @@ public class AuthenticationFilter implements ContainerRequestFilter{
 
 	private UserService userService = new UserServiceImpl();
 	
+    /**
+     * A preflight request is an OPTIONS request
+     * with an Origin header.
+     */
+    private static boolean isPreflightRequest(ContainerRequestContext request) {
+        return request.getHeaderString("Origin") != null
+                && request.getMethod().equalsIgnoreCase("OPTIONS");
+    }
+
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
 
+        // If it's a preflight request, we abort the request with
+        // a 200 status, and the CORS headers are added in the
+        // response filter method below.
+        if (isPreflightRequest(requestContext)) {
+        	requestContext.abortWith(Response.ok().build());
+            return;
+        }
+        
+        //API DE REFLECTION
 		Method method = resourceInfo.getResourceMethod();
 		 
 		//Access allowed for all

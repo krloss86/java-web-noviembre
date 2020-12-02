@@ -14,5 +14,6 @@ public class AppWSRestApplication extends ResourceConfig {
 	 
 	        //Register Auth Filter here
 	        register(AuthenticationFilter.class);
+	        register(CORSFilter.class);
 	    }
 }
