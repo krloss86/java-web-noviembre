@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<!-- PUEDEN USAR WEBJAR -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	</head>
+	
+	<body>
+	
+		<div align="center">
+		    <h1>Listado de Productos</h1>
+		    <a th:href="@{/new}" href="new">Crear Nuevo producto</a> | <a th:href="@{'/logout'}">Logout</a>
+		    <br/><br/>
+		    <table border="1">
+		        <thead>
+		            <tr>
+		                <th>ID</th>
+		                <th>Nombre</th>
+		                <th>Marca</th>
+		                <th>Precio</th>
+		                <th>Tipo Producto</th>
+		                <th></th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr th:each="product : ${productos}">
+		            	<td th:text="${product.id}"></td>
+		                <td th:text="${product.codigo}"></td>
+		                <td th:text="${product.titulo}"></td>
+		                <td th:text="${#numbers.formatDecimal(product.precio, 1, 'DEFAULT', 2, 'DEFAULT')}">1</td>
+		                <td th:text="${product.tipoProducto.descripcion}"></td>
+		                <td>
+		                	<a th:href="@{'/edit/' + ${product.id}}">Edit</a>
+		                	&nbsp;&nbsp;&nbsp;
+		                	<a th:href="@{'/delete/' + ${product.codigo}}">Delete</a>
+		                </td>
+		            </tr>
+		        </tbody>
+		    </table>
+		</div>	
+	</body>
+</html>
