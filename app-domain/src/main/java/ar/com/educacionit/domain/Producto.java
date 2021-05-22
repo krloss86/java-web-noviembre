@@ -28,7 +28,7 @@ public class Producto {
 	
 	//alt+shit+s
 	@ManyToOne
-	@JoinColumn(name = "tipo_producto", referencedColumnName = "id")
+	@JoinColumn(name = "id_tipo_producto", referencedColumnName = "id")
 	private TipoProducto tipoProducto;
 
 	//contructor por defecto

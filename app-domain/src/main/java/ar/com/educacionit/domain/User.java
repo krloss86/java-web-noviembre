@@ -36,7 +36,7 @@ public class User {
 	)
 	private List<Role> roles;
 	
-	private Boolean active;
+//	private Boolean active;
 	
 	public Long getId() {
 		return id;
@@ -70,12 +70,12 @@ public class User {
 		this.roles = roles;
 	}
 
-	public Boolean getActive() {
-		return active;
-	}
-
-	public void setActive(Boolean active) {
-		this.active = active;
-	}
+//	public Boolean getActive() {
+//		return active;
+//	}
+//
+//	public void setActive(Boolean active) {
+//		this.active = active;
+//	}
 	
 }
